@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    sass.py                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kchenna <kchenna@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/09/24 10:55:32 by kchenna           #+#    #+#              #
+#    Updated: 2018/09/24 10:57:47 by kchenna          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+import sys
+
+def door_size(n):
+  if n%2==1:
+    return n
+  else:
+    return n-1
+
+def base_width_calculator(n):
+  all_stars=[]
+  stage_rows = 3
+  new_stage_extra = 1
+  num_stars = 0
+  n2 = 3
+  for x in range(n):
+    for y in range(n2):
+      all_stars.append(num_stars+1)
+      num_stars += 2
+    if x%2 == 0:
+      new_stage_extra += 1
+    num_stars += new_stage_extra*2
+
+    n2 += 1
+  return all_stars
+
+def string_builder(row, pyramid_size):
+  door = door_size(pyramid_size)
+
+  return None
+
+# print(len(sys.argv), sys.argv)
+if len(sys.argv) >= 2:
+  pyramid_size = int(sys.argv[1])
+  all_stars = base_width_calculator(pyramid_size)
+else:
+  print("Pyramid Size Required")
+  exit()
+
+for row in all_stars:
+  string = "{:^" + str(all_stars[-1]+2) + "}"
+  print(string.format("/"+"*"*row+"\\"))
